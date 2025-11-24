@@ -118,7 +118,10 @@ int arch_dup_task_struct(struct task_struct *dst, struct task_struct *src);
 
 #define TIF_32BIT			16	/* compat-mode 32bit process */
 #define TIF_RISCV_V_DEFER_RESTORE	17	/* restore Vector before returing to user */
+#define TIF_POLLING_NRFLAG            18  /* set while polling in poll_idle() */
 
 #define _TIF_RISCV_V_DEFER_RESTORE	BIT(TIF_RISCV_V_DEFER_RESTORE)
+
+#define _TIF_POLLING_NRFLAG           BIT(TIF_POLLING_NRFLAG)
 
 #endif /* _ASM_RISCV_THREAD_INFO_H */
