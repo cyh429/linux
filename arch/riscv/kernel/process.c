@@ -45,6 +45,7 @@ void noinstr arch_cpu_idle(void)
 {
 	cpu_do_idle();
 }
+EXPORT_SYMBOL_GPL(arch_cpu_idle);
 
 int set_unalign_ctl(struct task_struct *tsk, unsigned int val)
 {
