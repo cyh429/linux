@@ -14,6 +14,14 @@
 #include <asm/cmpxchg.h>
 #include <asm/fence.h>
 
+#define SMP_TIMEOUT_POLL_COUNT  1
+
+#ifdef CONFIG_RISCV_ISA_ZAWRS
+#define cpu_poll_relax(ptr, val)    __cmpwait_relaxed(ptr, val)
+#else
+#define cpu_poll_relax(ptr, val)    cpu_relax()
+#endif
+
 /* These barriers need to enforce ordering on both devices or memory. */
 #define __mb()		RISCV_FENCE(iorw, iorw)
 #define __rmb()		RISCV_FENCE(ir, ir)
